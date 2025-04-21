@@ -1,0 +1,52 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+
+# Collection of common useful hooks
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0 # Use the latest version
+    hooks:
+    -   id: trailing-whitespace
+    -   id: end-of-file-fixer
+    -   id: check-yaml
+    -   id: check-json
+    -   id: check-merge-conflict
+    -   id: detect-private-key
+    -   id: check-added-large-files
+
+# Terraform specific hooks
+-   repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.99.0 # Use the latest version or one compatible with your Terraform version
+    hooks:
+    -   id: terraform_fmt
+    -   id: terraform_validate
+    -   id: terraform_tflint
+    # -   id: terraform_docs # Uncomment if you want to use terraform-docs via this repo
+    # -   id: tfsec # Uncomment if you want to use tfsec via this repo
+
+# Example: Using tflint directly (alternative to the one above)
+# -   repo: https://github.com/terraform-linters/tflint
+#     rev: v0.51.1 # Use the latest version
+#     hooks:
+#       - id: tflint
+#         args: [--config=.tflint.hcl] # Optional: specify config file
+
+# Example: Using tfsec directly (alternative to the one above)
+# -   repo: https://github.com/aquasecurity/tfsec
+#     rev: v1.28.9 # Use the latest version
+#     hooks:
+#       - id: tfsec
+
+# Example: Using checkov directly
+# -   repo: https://github.com/bridgecrewio/checkov.git
+#     rev: '3.2.133' # Use the latest version
+#     hooks:
+#       - id: checkov
+#         args: ["--quiet", "-d", "."] # Adjust args as needed
+
+# Example: Using terraform-docs directly (alternative to the one above)
+# -   repo: https://github.com/terraform-docs/terraform-docs
+#     rev: v0.18.0 # Use the latest version
+#     hooks:
+#       - id: terraform-docs-go
+#         args: ["markdown", "table", "--output-file", "README.md", "./mymodule/"] # Adjust args for your needs
